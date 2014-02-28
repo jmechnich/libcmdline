@@ -48,13 +48,15 @@
 #include "Compiler.hh"
 #include "Errors.hh"
 
+#include <cstdlib>
+
 int main(
     int argc,
     char** argv)
 {
-  CmdArgSwitch toggle1('1', "toggle1", "This toggles feature 1");
+  CmdArgSwitch toggle1('a', "toggle1", "This toggles feature a");
   
-  CmdArgSwitch toggle2('2', "toggle2", "This activates feature 2");
+  CmdArgSwitch toggle2('b', "toggle2", "This activates feature b");
   
   CmdArgType<int> count(
       'c', "count", "number", "Number of hurzes.");
@@ -86,8 +88,8 @@ int main(
   CmdArgTypeVector<std::string> hurzes(
       "hurzes", "All the hurzes we need. This is used for "
       "checking if vectors work...",
-//      CmdArg::Syntax(CmdArg::isOPT|CmdArg::isVALOPT));
-      CmdArg::isREQ);
+      CmdArg::Syntax(CmdArg::isOPT|CmdArg::isVALOPT));
+  //CmdArg::isREQ);
   
   
   CmdLine cmd(argv[0], "just a test program", true);
@@ -118,30 +120,30 @@ int main(
   catch (CmdLineUsageError e)
   {
     cmd.usage();
-    exit(0);
+    std::exit(0);
   }
   catch (CmdLineUsageHTMLError e)
   {
     cmd.usageHTML(std::cerr);
-    exit(0);
+    std::exit(0);
   }
   catch (CmdLineSyntaxError e)
   {
     cmd.error() << "Oops: you seem to have given invalid command line arguments...\n"
                 << e.str() << std::endl;
     cmd.usage();
-    exit(-1);
+    std::exit(-1);
   }
   catch (CmdLineError e)
   {
     cmd.error() << "Oops: an CmdLine error occured. That's bad...\n"
                 << e.str() << std::endl;
-    exit(-2);
+    std::exit(-2);
   }
   catch (...)
   {
     cmd.error() << "Oops: an unknown error occured. That's really bad...\n";
-    exit(-3);
+    std::exit(-3);
   }
 
   std::cerr << "count   =" << count.value() << std::endl

@@ -533,7 +533,7 @@ public:
             {
               std::vector<T>::clear();
             }
-            push_back(value);
+            this->push_back(value);
           }
           modified(true);
           return temp;
@@ -789,7 +789,7 @@ public:
               throw(se);
             }
             
-            push_back(value);
+            this->push_back(value);
           }
           modified(true);
           return temp;

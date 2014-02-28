@@ -86,6 +86,7 @@
 #include <cstdarg> // va_arg(...), va_end(...)
 #include <cstring> // strpbrk(...)
 #include <sstream>
+#include <cstdlib>
 #include <unistd.h> // isatty(...)
 
 CmdLine::

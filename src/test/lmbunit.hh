@@ -112,6 +112,7 @@ testMyComplex.cc:20: testIntegerAddition(): assertion 'a+a == b' failed, because
 #include <sys/types.h>  // for fork()
 #include <unistd.h>     // for fork()
 #include <sys/wait.h>   // for waitpid()
+#include <cstdlib>
 
 /*=========================================================================
  *  Modul global Variables
@@ -336,7 +337,7 @@ if ( ((actual) < (expected)-(delta)) ||  ((expected)+(delta) < (actual)))     \
     {                                                                                           \
       std::cout << "PASSED\n";                                                                  \
     }                                                                                           \
-    exit( _nFails - oldNFails);                                                                 \
+    std::exit( _nFails - oldNFails);                                    \
     /* This is end of child */                                                                  \
   }                                                                                             \
   else                                                                                          \
