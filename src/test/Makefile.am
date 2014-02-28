@@ -1,7 +1,7 @@
 TESTS          = testCmdLine
 check_PROGRAMS = $(TESTS)
 bin_PROGRAMS   = test_CmdLine 
-INCLUDES       = -I$(top_srcdir)/src/libcmdline
+AM_CPPFLAGS    = -I$(top_srcdir)/src/libcmdline
 
 test_CmdLine_SOURCES = test_CmdLine.cc
 test_CmdLine_LDADD = $(top_builddir)/src/libcmdline/.libs/libcmdline.a
