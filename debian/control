@@ -1,0 +1,34 @@
+Source: libcmdline
+Priority: optional
+Maintainer: Joerg Mechnich <mechnich@informatik.uni-freiburg.de>
+Build-Depends: debhelper (>= 4.0.0), autotools-dev
+Standards-Version: 3.6.2
+Section: libs
+
+Package: libcmdline-dev
+Section: libdevel
+Architecture: any
+Depends: libcmdline1 (= ${Source-Version})
+Description: library for parsing command-line arguments
+ The libcmdline is a command line parsing library written in c++.
+ It supports single character short options (e.g. -v, -n, ...), long gnu-style
+ options (e.g. --verbose, ...) and positional parameters (e.g. list of
+ filenames given to a command).
+ libcmdline automatically generates a help message, that can be displayed
+ via the "--help" option.
+ It is also possible to display a "HTMLified" help message with "--usageHTML"
+ and an "XML" help message (used for frontend programs) with "--usageXML".
+
+Package: libcmdline1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: library for parsing command-line arguments - development files
+ The libcmdline is a command line parsing library written in c++.
+ It supports single character short options (e.g. -v, -n, ...), long gnu-style
+ options (e.g. --verbose, ...) and positional parameters (e.g. list of
+ filenames given to a command).
+ libcmdline automatically generates a help message, that can be displayed
+ via the "--help" option.
+ It is also possible to display a "HTMLified" help message with "--usageHTML"
+ and an "XML" help message (used for frontend programs) with "--usageXML".

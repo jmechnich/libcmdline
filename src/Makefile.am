@@ -1,0 +1,1 @@
+SUBDIRS = libcmdline test

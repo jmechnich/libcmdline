@@ -1,0 +1,72 @@
+- defaults in usage ausgeben
+---> keine defaults :-)
+---> done
+
+- vector statt list und erben
+---> done
+
+- op() weg -> value(), parse(..)
+---> done
+
+- listen mit fester grösse
+---> working on it
+
+- help überladen
+---> idee: cmdline contructor hat flag "defaultargs"
+           ist es gesetzt, werden die default args erzeugt:
+           --Help/-H --?/-? --HelpHTML --HelpLATEX
+---> done (keine default help args :-()
+
+- exception bei doppelten args
+---> idee: bei append: scan durch args, existiert long || short name
+           -> exception
+---> done (CmdLineDuplicateArgs)
+
+- parsen aus string/stdin/datei (1. file lesen, 2. commandozeile, 3. stdin)
+---> müsste gehen!
+
+- flags nicht automatisch resetten
+
+
+- callbacks?
+---> nope (kann der user ja implementieren, indem er von CmdArg erbt...)
+---> done
+
+- usage als latex/html
+---> html done (CmdLine::usageHTML(std::ostream&))
+
+
+- promptUser(...): wird isatty benötigt? der cast nach filebuf* ist
+	gefährlich!?
+---> done: dynamic_cast.
+
+- fixed size list.
+---> done
+
+- autoconf/automake
+--> done
+
+
+Olaf 12.4.: CmdArg::clear(CmdArg::Flags = ALLFLAGS) verdeckt in CmdArgVector dir clear Methode. Also besser in clearFlags() umbenennen.
+
+Olaf, 18.4.: 
+- Beim Anzeigen der Hilfe zu jedem Argument den
+  Default-Wert anzeigen (falls einer gesetzt wurde) in der Form:
+
+  Options/Arguments:
+     -h size       half width of the gaussian used for histogram smoothing.
+                   default: 1.0
+     -b radius     background smoothing size used for shading correction.
+                   should be greater than the greatest particle radius.
+                   default: 60
+     -m radius     minimum radius for pollen [pixel]. Smaller objects will be
+                   removed. default: 12
+
+  Damit man das Setzen des Default-Wertes einfach erkennt, sollte man
+  dann statt wie bisher xyz.value()=123 besser eine Methode xyz.setValue(123)
+  hinzufügen  
+
+
+Olaf, 3.7.:
+- CmdArgSwitch hat noch keine SetDefaultValue() Methode
+- Die eckigen Klammern bei der detail-Beschreibung der Parameter besser weglassen. Die verwirren nur.
